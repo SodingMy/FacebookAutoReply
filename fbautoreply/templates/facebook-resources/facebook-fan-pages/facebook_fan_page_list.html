@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1><a href="/facebookaccount">Facebook Account</a> &nbsp;|&nbsp; Facebook Fan Pages</h1>
+
+    <table style="width:100%;border-collapse: collapse;" border="1" cellpadding="5">
+  <tr>
+    <th>Fan page description</th>
+    <th>Fan page ID</th>
+      <th>Fan page access token</th>
+  </tr>
+        {% for facebook_fan_page in object_list %}
+  <tr>
+    <td>{{ facebook_fan_page.fan_page_description }}</td>
+    <td>{{ facebook_fan_page.fan_page_id }}</td>
+  <td>**********HIDDEN**********</td>
+  </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url "facebook_fan_page_new" %}">Synchronize fan pages</a>
+{% endblock %}

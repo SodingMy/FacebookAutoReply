@@ -1,0 +1,1 @@
+web: gunicorn FacebookAutoReply.wsgi --log-file -

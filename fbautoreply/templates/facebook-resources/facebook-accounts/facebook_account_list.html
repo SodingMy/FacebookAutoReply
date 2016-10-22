@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>Facebook Account &nbsp;|&nbsp; <a href="/facebookfanpage">Facebook Fan Pages</a></h1>
+
+    <table style="width:100%;border-collapse: collapse;" border="1" cellpadding="5">
+  <tr>
+    <th>Account description</th>
+    <th>Facebook application ID [Secret]</th>
+    <th>Actions</th>
+  </tr>
+        {% for facebook_account in object_list %}
+  <tr>
+    <td>{{ facebook_account.account_description }}</td>
+    <td>**********HIDDEN**********</td>
+    <td>
+        <a href="{% url "facebook_account_edit" facebook_account.id %}">Edit</a> &nbsp;|&nbsp;
+        <a href="{% url "facebook_account_delete" facebook_account.id %}">Delete</a>
+    </td>
+  </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url "facebook_account_new" %}">Add New Account</a>
+{% endblock %}

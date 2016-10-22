@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>Autoresponder</h1>
+
+    <table style="width:100%;border-collapse: collapse;" border="1" cellpadding="5">
+  <tr>
+    <th>Campaign name</th>
+    <th>Actions</th>
+  </tr>
+        {% for autoresponder in object_list %}
+  <tr>
+    <td>{{ autoresponder.campaign_name }}</td>
+    <td>
+        <a href="{% url "autoresponder_edit" autoresponder.id %}">Edit</a> &nbsp;|&nbsp;
+        <a href="{% url "autoresponder_delete" autoresponder.id %}">Delete</a>
+    </td>
+  </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url "autoresponder_new" %}">Create New Campaign</a>
+{% endblock %}

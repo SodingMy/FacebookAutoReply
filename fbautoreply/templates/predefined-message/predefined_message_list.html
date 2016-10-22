@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>Predefined Message</h1>
+
+    <table style="width:100%;border-collapse: collapse;" border="1" cellpadding="5">
+  <tr>
+    <th>List name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+        {% for predefined_message in object_list %}
+  <tr>
+    <td>{{ predefined_message.list_name }}</td>
+    <td>{{ predefined_message.list_name }}</td>
+    <td>
+        <a href="{% url "predefined_message_detail_list" predefined_message.id %}">Detail</a> &nbsp;|&nbsp;
+        <a href="{% url "predefined_message_edit" predefined_message.id %}">Edit</a> &nbsp;|&nbsp;
+        <a href="{% url "predefined_message_delete" predefined_message.id %}">Delete</a>
+    </td>
+  </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url "predefined_message_new" %}">Create New List</a>
+{% endblock %}
